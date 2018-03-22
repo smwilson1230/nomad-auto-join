@@ -51,7 +51,7 @@ resource "aws_launch_configuration" "default" {
 
 resource "aws_autoscaling_group" "default" {
   name     = "${var.namespace}"
-  max_size = 5
+  max_size = 10
   min_size = "${var.instances}"
 
   launch_configuration = "${aws_launch_configuration.default.name}"
@@ -63,13 +63,13 @@ resource "aws_autoscaling_group" "default" {
     aws_alb_target_group.ui.*.arn,
     aws_alb_target_group.http_test.*.arn)}"]
 
-  tag = {
+  tag  {
     key                 = "Name"
     value               = "${var.namespace}"
     propagate_at_launch = true
   }
 
-  tag = {
+  tag  {
     key                 = "${var.consul_join_tag_key}"
     value               = "${var.consul_join_tag_value}"
     propagate_at_launch = true
