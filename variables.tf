@@ -53,5 +53,9 @@ variable "nomad_agents" {
 
 variable "public_key_path" {
   description = "The absolute path on disk to the SSH public key."
-  default     = "~/.ssh/id_rsa.pub"
+  default     = "~/.ssh/hashi_rsa.pub"
+}
+
+variable "key_name" {
+  description = "AWS SSH keyname"
 }
