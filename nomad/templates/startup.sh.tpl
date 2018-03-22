@@ -9,6 +9,7 @@ function installDependencies() {
   echo "Installing dependencies..."
   sudo apt-get -qq update &>/dev/null
   sudo apt-get -yqq install unzip &>/dev/null
+  sudo apt-get -yqq install tomcat &>/dev/null
 }
 
 function installDocker() {

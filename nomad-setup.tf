@@ -1,8 +1,3 @@
-resource "aws_key_pair" "nomad" {
-  key_name   = "${var.key_name}"
-  public_key = "${file("${var.public_key_path}")}"
-}
-
 module "servers" {
   source = "./nomad"
 
@@ -14,7 +9,7 @@ module "servers" {
   internal_alb_arn = "${aws_alb.internal.arn}"
   external_alb_arn = "${aws_alb.external.arn}"
   security_group   = "${aws_security_group.default.id}"
-  key_name         = "${aws_key_pair.nomad.id}"
+  key_name         = "${var.key_name}"
 
   consul_enabled        = true
   consul_type           = "server"
@@ -40,7 +35,7 @@ module "clients" {
   internal_alb_arn = "${aws_alb.internal.arn}"
   external_alb_arn = "${aws_alb.external.arn}"
   security_group   = "${aws_security_group.default.id}"
-  key_name         = "${aws_key_pair.nomad.id}"
+  key_name         = "${var.key_name}"
 
   consul_enabled        = true
   consul_type           = "client"

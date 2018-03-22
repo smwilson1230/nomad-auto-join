@@ -59,3 +59,7 @@ variable "public_key_path" {
 variable "key_name" {
   description = "AWS SSH keyname"
 }
+
+variable "AWS_region" {
+  description = "AWS Region"
+}

@@ -15,3 +15,5 @@ nomad_agents = 6
 hashiui_version = "0.13.6"
 
 key_name = "swilson"
+
+AWS_region = "us-east-2"

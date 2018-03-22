@@ -27,7 +27,7 @@ data "template_file" "startup" {
 resource "aws_instance" "ssh_host" {
   ami           = "${data.aws_ami.ubuntu-1604.id}"
   instance_type = "t2.nano"
-  key_name      = "${aws_key_pair.nomad.id}"
+  key_name      = "${var.key_name}"
 
   subnet_id              = "${element(aws_subnet.default.*.id,0)}"
   vpc_security_group_ids = ["${aws_security_group.default.id}"]
